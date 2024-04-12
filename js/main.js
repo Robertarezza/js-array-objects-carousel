@@ -77,10 +77,10 @@ imageMyCarousel.innerHTML += imagElem;
    imagSlide[activImag].classList.remove("active")
 
    //Se l'indice corrente è 0, 
-   //   imposta l'indice sulla miniatura finale, 
+   //   imposta l'indice sul immag finale, 
    //altrimenti 
    //   decrementa l'indice
-   
+
    if (activImag == 0){ 
           
     activImag = images.length -1
