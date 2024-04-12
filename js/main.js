@@ -45,15 +45,20 @@ imageMyCarousel.innerHTML += imagElem;
 
   });
 
+//prendo la classe dove mi interessa poi metterci la stampa
   const imagSlide = document.querySelectorAll(".my-carousel-item ");
   console.log(imagSlide);
 
+  //setto a 0 l'indice corrente
   let activImag = 0;
 
+  //aggiungo la classe cative all'indice corrente
   imagSlide[activImag].classList.add("active");
 
+  //al click del bottone next 
   document.querySelector(".my-next").addEventListener("click", function (){
-  
+ 
+    //aggiungo la classe
     imagSlide[activImag].classList.remove("active")
     if (activImag < images.length -1){ 
       activImag++
@@ -64,9 +69,18 @@ imageMyCarousel.innerHTML += imagElem;
     imagSlide[activImag].classList.add("active");
   })
 
+//al click del bottone previous
   document.querySelector(".my-previous").addEventListener("click", function (){
-  //milestone 2
+  //milestone 1 e 2
+  //aggiungo la classe 
+  
    imagSlide[activImag].classList.remove("active")
+
+   //Se l'indice corrente è 0, 
+   //   imposta l'indice sulla miniatura finale, 
+   //altrimenti 
+   //   decrementa l'indice
+   
    if (activImag == 0){ 
           
     activImag = images.length -1
