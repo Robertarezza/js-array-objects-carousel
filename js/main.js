@@ -28,68 +28,89 @@ const images = [
 
 //milestone 1
 const imageMyCarousel = document.querySelector(".my-carousel-images");
-  
-images.forEach((curImages) =>{
 
-//     //STAMPA NEL DOM TUTTE LE INFO
-const imagElem = `
+
+
+images.forEach((curImages) => {
+
+  //     //STAMPA NEL DOM TUTTE LE INFO
+  const imagElem = `
 <div class="my-carousel-item " carousel-item="1">
     <img class="img-fluid" src="${curImages.image}"
-    alt="Marvel's Spiderman Miles Morale picture"</img>
+    </img>
   <div class="item-description px-3">
     <h2>${curImages.title}</h2>
     <p>${curImages.text}</p>
   </div>
 </div>`;
-imageMyCarousel.innerHTML += imagElem;
+  imageMyCarousel.innerHTML += imagElem;
 
-  });
+ 
+});
 
 //prendo la classe dove mi interessa poi metterci la stampa
-  const imagSlide = document.querySelectorAll(".my-carousel-item ");
-  console.log(imagSlide);
+const imagSlide = document.querySelectorAll(".my-carousel-item ");
+console.log(imagSlide);
 
-  //setto a 0 l'indice corrente
-  let activImag = 0;
+//setto a 0 l'indice corrente
+let activImag = 0;
 
-  //aggiungo la classe cative all'indice corrente
+//aggiungo la classe active all'indice corrente
+imagSlide[activImag].classList.add("active");
+
+//al click del bottone next 
+document.querySelector(".my-next").addEventListener("click", function () {
+
+  //aggiungo la classe
+  imagSlide[activImag].classList.remove("active")
+  if (activImag < images.length - 1) {
+    activImag++
+
+  } else {
+    activImag = 0
+  }
   imagSlide[activImag].classList.add("active");
-
-  //al click del bottone next 
-  document.querySelector(".my-next").addEventListener("click", function (){
- 
-    //aggiungo la classe
-    imagSlide[activImag].classList.remove("active")
-    if (activImag < images.length -1){ 
-      activImag++
-
-    } else {
-      activImag = 0
-    }
-    imagSlide[activImag].classList.add("active");
-  })
+})
 
 //al click del bottone previous
-  document.querySelector(".my-previous").addEventListener("click", function (){
+document.querySelector(".my-previous").addEventListener("click", function () {
   //milestone 1 e 2
   //aggiungo la classe 
+
+  imagSlide[activImag].classList.remove("active")
+
+  //Se l'indice corrente è 0, 
+  //   imposta l'indice sul immag finale, 
+  //altrimenti 
+  //   decrementa l'indice
+
+  if (activImag == 0) {
+
+    activImag = images.length - 1
+
+  } else {
+    activImag--
+  }
+  imagSlide[activImag].classList.add("active");
+})
+
+
+
+//bonus 1
+const miniatures = document.querySelector(".my-thumbnails");
+//miniatures.classList.add("my-thumbnail")
+
+images.forEach((curMiniImages) => {
+
   
-   imagSlide[activImag].classList.remove("active")
 
-   //Se l'indice corrente è 0, 
-   //   imposta l'indice sul immag finale, 
-   //altrimenti 
-   //   decrementa l'indice
+miniImag =  `
+<img class=" my-thumbnail img-fluid" src="${curMiniImages.image}" </img>`
 
-   if (activImag == 0){ 
-          
-    activImag = images.length -1
+  miniatures.innerHTML += miniImag
+  //miniImag.classList.add("my-thumbnail")
+  console.log(miniImag);
+})
 
-    }   else {
-      activImag--
-    }
-imagSlide[activImag].classList.add("active");
-  })
 
-  
 

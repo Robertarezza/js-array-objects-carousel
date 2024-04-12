@@ -16,3 +16,9 @@ Milestone 1:
 Milestone 2:
 
 - [x] Aggiungere il **ciclo infinito** del carosello. Ovvero se la miniatura attiva è la prima e l'utente clicca la freccia verso destra, la miniatura che deve attivarsi sarà l'ultima e viceversa per l'ultima miniatura se l'utente clicca la freccia verso sinistra.
+
+BONUS 1:
+
+- [x] Aggiungere le thumbnails (sottoforma di miniatura) 
+
+- [] Al click attivare l’immagine corrispondente.
