@@ -65,15 +65,16 @@ imageMyCarousel.innerHTML += imagElem;
   })
 
   document.querySelector(".my-previous").addEventListener("click", function (){
-  
-    imagSlide[activImag].classList.remove("active")
-    if (activImag < images.length -1){ 
-      activImag++
+  //milestone 2
+   imagSlide[activImag].classList.remove("active")
+   if (activImag == 0){ 
+          
+    activImag = images.length -1
 
-    } else {
-      activImag = 0
+    }   else {
+      activImag--
     }
-    imagSlide[activImag].classList.add("active");
+imagSlide[activImag].classList.add("active");
   })
 
   
