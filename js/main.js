@@ -61,7 +61,7 @@ imagSlide[activImag].classList.add("active");
 //al click del bottone next 
 document.querySelector(".my-next").addEventListener("click", function () {
 
-  //aggiungo la classe
+  //rimuovo la classe
   imagSlide[activImag].classList.remove("active")
   if (activImag < images.length - 1) {
     activImag++
@@ -69,13 +69,14 @@ document.querySelector(".my-next").addEventListener("click", function () {
   } else {
     activImag = 0
   }
+  //aggiungo la classe
   imagSlide[activImag].classList.add("active");
 })
 
 //al click del bottone previous
 document.querySelector(".my-previous").addEventListener("click", function () {
   //milestone 1 e 2
-  //aggiungo la classe 
+  //rimuovo la classe
 
   imagSlide[activImag].classList.remove("active")
 
@@ -91,6 +92,7 @@ document.querySelector(".my-previous").addEventListener("click", function () {
   } else {
     activImag--
   }
+  //aggiungo la classe
   imagSlide[activImag].classList.add("active");
 })
 
