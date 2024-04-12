@@ -29,6 +29,8 @@ const images = [
 //milestone 1
 const imageMyCarousel = document.querySelector(".my-carousel-images");
 
+//bonus
+const miniatures = document.querySelector(".my-thumbnails");
 
 
 images.forEach((curImages) => {
@@ -45,6 +47,11 @@ images.forEach((curImages) => {
 </div>`;
   imageMyCarousel.innerHTML += imagElem;
 
+  miniImag =  `
+<img class=" my-thumbnail img-fluid" src="${curImages.image}" </img>`
+
+  miniatures.innerHTML += miniImag
+  console.log(miniImag);
  
 });
 
@@ -99,19 +106,14 @@ document.querySelector(".my-previous").addEventListener("click", function () {
 
 
 //bonus 1
-const miniatures = document.querySelector(".my-thumbnails");
+
 //miniatures.classList.add("my-thumbnail")
 
 images.forEach((curMiniImages) => {
 
   
 
-miniImag =  `
-<img class=" my-thumbnail img-fluid" src="${curMiniImages.image}" </img>`
 
-  miniatures.innerHTML += miniImag
-  //miniImag.classList.add("my-thumbnail")
-  console.log(miniImag);
 })
 
 
