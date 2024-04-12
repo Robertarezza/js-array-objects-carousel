@@ -36,12 +36,14 @@ div.my-next{
 }
 
 div.my-previous{
-    left: 1rem;
+    left: 12rem;
+    top: 30rem;
 }
 
 div.my-next{
-    right: 1rem;
-}
+    right: 12rem;
+    top: 30rem;
+} 
 
 div.my-previous > span::after{
     font-family: "Font Awesome 5 Free";

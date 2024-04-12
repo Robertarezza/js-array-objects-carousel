@@ -25,3 +25,56 @@ const images = [
     text: "Marvel's Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.",
   },
 ];
+
+//milestone 1
+const imageMyCarousel = document.querySelector(".my-carousel-images");
+  
+images.forEach((curImages) =>{
+
+//     //STAMPA NEL DOM TUTTE LE INFO
+const imagElem = `
+<div class="my-carousel-item " carousel-item="1">
+    <img class="img-fluid" src="${curImages.image}"
+    alt="Marvel's Spiderman Miles Morale picture"</img>
+  <div class="item-description px-3">
+    <h2>${curImages.title}</h2>
+    <p>${curImages.text}</p>
+  </div>
+</div>`;
+imageMyCarousel.innerHTML += imagElem;
+
+  });
+
+  const imagSlide = document.querySelectorAll(".my-carousel-item ");
+  console.log(imagSlide);
+
+  let activImag = 0;
+
+  imagSlide[activImag].classList.add("active");
+
+  document.querySelector(".my-next").addEventListener("click", function (){
+  
+    imagSlide[activImag].classList.remove("active")
+    if (activImag < images.length -1){ 
+      activImag++
+
+    } else {
+      activImag = 0
+    }
+    imagSlide[activImag].classList.add("active");
+  })
+
+  document.querySelector(".my-previous").addEventListener("click", function (){
+  
+    imagSlide[activImag].classList.remove("active")
+    if (activImag < images.length -1){ 
+      activImag++
+
+    } else {
+      activImag = 0
+    }
+    imagSlide[activImag].classList.add("active");
+  })
+
+  
+
