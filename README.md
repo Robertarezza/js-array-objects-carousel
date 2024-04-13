@@ -21,4 +21,4 @@ BONUS 1:
 
 - [x] Aggiungere le thumbnails (sottoforma di miniatura) 
 
-- [] Al click attivare l’immagine corrispondente.
+- [x] Al click attivare l’immagine corrispondente.

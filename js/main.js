@@ -29,8 +29,6 @@ const images = [
 //milestone 1
 const imageMyCarousel = document.querySelector(".my-carousel-images");
 
-//bonus 1
-const miniatures = document.querySelector(".my-thumbnails");
 
 
 images.forEach((curImages) => {
@@ -47,12 +45,6 @@ images.forEach((curImages) => {
 </div>`;
   imageMyCarousel.innerHTML += imagElem;
 
-  miniImag =  `
-<img class=" my-thumbnail img-fluid" src="${curImages.image}" </img>`
-
-  miniatures.innerHTML += miniImag
-  //miniImag.classList.add("my-thumbnail")
-  //console.log(miniImag);
  
 });
 
@@ -70,7 +62,7 @@ console.log(imagSlide[activImag]);
 //al click del bottone next 
 document.querySelector(".my-next").addEventListener("click", function () {
 
-  //aggiungo la classe
+  //rimuovo la classe
   imagSlide[activImag].classList.remove("active")
   if (activImag < images.length - 1) {
     activImag++
@@ -78,13 +70,14 @@ document.querySelector(".my-next").addEventListener("click", function () {
   } else {
     activImag = 0
   }
+  //aggiungo la classe
   imagSlide[activImag].classList.add("active");
 })
 
 //al click del bottone previous
 document.querySelector(".my-previous").addEventListener("click", function () {
   //milestone 1 e 2
-  //aggiungo la classe 
+  //rimuovo la classe
 
   imagSlide[activImag].classList.remove("active")
 
@@ -100,55 +93,26 @@ document.querySelector(".my-previous").addEventListener("click", function () {
   } else {
     activImag--
   }
+  //aggiungo la classe
   imagSlide[activImag].classList.add("active");
 })
 
 
-///bonus 1.1
-const imagMiniSlide = document.querySelectorAll(".my-thumbnail");
-console.log(imagSlide);
 
-//setto a 0 l'indice corrente
-let activMiniImag = 0;
+//bonus 1
+const miniatures = document.querySelector(".my-thumbnails");
+//miniatures.classList.add("my-thumbnail")
 
-//aggiungo la classe active all'indice corrente
-imagMiniSlide[activMiniImag].classList.add("active");
-console.log(imagMiniSlide[activMiniImag]);
+images.forEach((curMiniImages) => {
 
-//al click del bottone next 
-document.querySelector(".my-next").addEventListener("click", function () {
+  
 
-  //aggiungo la classe
-  imagMiniSlide[activMiniImag].classList.remove("active")
-  if (activMiniImag < images.length - 1) {
-    activMiniImag++
+miniImag =  `
+<img class=" my-thumbnail img-fluid" src="${curMiniImages.image}" </img>`
 
-  } else {
-    activMiniImag = 0
-  }
-  imagMiniSlide[activMiniImag].classList.add("active");
-})
-
-//al click del bottone previous
-document.querySelector(".my-previous").addEventListener("click", function () {
-  //milestone 1 e 2
-  //aggiungo la classe 
-
-  imagMiniSlide[activMiniImag].classList.remove("active")
-
-  //Se l'indice corrente è 0, 
-  //   imposta l'indice sul immag finale, 
-  //altrimenti 
-  //   decrementa l'indice
-
-  if (activMiniImag == 0) {
-
-    activMiniImag = images.length - 1
-
-  } else {
-    activMiniImag--
-  }
-  imagMiniSlide[activMiniImag].classList.add("active");
+  miniatures.innerHTML += miniImag
+  //miniImag.classList.add("my-thumbnail")
+  console.log(miniImag);
 })
 
 
