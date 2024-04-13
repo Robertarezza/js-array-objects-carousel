@@ -28,7 +28,8 @@ const images = [
 
 //milestone 1
 const imageMyCarousel = document.querySelector(".my-carousel-images");
-
+//bonus 1
+const miniatures = document.querySelector(".my-thumbnails");
 
 
 images.forEach((curImages) => {
@@ -45,19 +46,26 @@ images.forEach((curImages) => {
 </div>`;
   imageMyCarousel.innerHTML += imagElem;
 
+  //bonus 1
+miniImag =  `
+<img class=" my-thumbnail img-fluid" src="${curImages.image}" </img>`
+
+  miniatures.innerHTML += miniImag
+  //miniImag.classList.add("my-thumbnail")
+  //console.log(miniImag);
  
 });
 
 //prendo la classe dove mi interessa poi metterci la stampa
 const imagSlide = document.querySelectorAll(".my-carousel-item");
-console.log(imagSlide);
+//console.log(imagSlide);
 
 //setto a 0 l'indice corrente
 let activImag = 0;
 
 //aggiungo la classe active all'indice corrente
 imagSlide[activImag].classList.add("active");
-console.log(imagSlide[activImag]);
+//console.log(imagSlide[activImag]);
 
 //al click del bottone next 
 document.querySelector(".my-next").addEventListener("click", function () {
@@ -100,20 +108,55 @@ document.querySelector(".my-previous").addEventListener("click", function () {
 
 
 //bonus 1
-const miniatures = document.querySelector(".my-thumbnails");
-//miniatures.classList.add("my-thumbnail")
+//prendo la classe dove mi interessa poi metterci la stampa
+const imagMiniSlide = document.querySelectorAll(".my-thumbnail");
+console.log(imagMiniSlide);
 
-images.forEach((curMiniImages) => {
+//setto a 0 l'indice corrente
+let activMiniImag = 0;
 
-  
+//aggiungo la classe active all'indice corrente
+imagMiniSlide[activMiniImag].classList.add("active");
+console.log(imagMiniSlide[activMiniImag]);
 
-miniImag =  `
-<img class=" my-thumbnail img-fluid" src="${curMiniImages.image}" </img>`
+//al click del bottone next 
+document.querySelector(".my-next").addEventListener("click", function () {
 
-  miniatures.innerHTML += miniImag
-  //miniImag.classList.add("my-thumbnail")
-  console.log(miniImag);
+  //rimuovo la classe
+  imagMiniSlide[activMiniImag].classList.remove("active")
+  if (activMiniImag < images.length - 1) {
+    activMiniImag++
+
+  } else {
+    activMiniImag = 0
+  }
+  //aggiungo la classe
+  imagMiniSlide[activMiniImag].classList.add("active");
 })
+
+//al click del bottone previous
+document.querySelector(".my-previous").addEventListener("click", function () {
+  //milestone 1 e 2
+  //rimuovo la classe
+
+  imagMiniSlide[activMiniImag].classList.remove("active")
+
+  //Se l'indice corrente è 0, 
+  //   imposta l'indice sul immag finale, 
+  //altrimenti 
+  //   decrementa l'indice
+
+  if (activMiniImag == 0) {
+
+    activMiniImag = images.length - 1
+
+  } else {
+    activMiniImag--
+  }
+  //aggiungo la classe
+  imagMiniSlide[activMiniImag].classList.add("active");
+})
+
 
 
 
