@@ -29,6 +29,8 @@ const images = [
 //milestone 1
 const imageMyCarousel = document.querySelector(".my-carousel-images");
 
+//bonus 1
+const miniatures = document.querySelector(".my-thumbnails");
 
 
 images.forEach((curImages) => {
@@ -45,11 +47,17 @@ images.forEach((curImages) => {
 </div>`;
   imageMyCarousel.innerHTML += imagElem;
 
+  miniImag =  `
+<img class=" my-thumbnail img-fluid" src="${curImages.image}" </img>`
+
+  miniatures.innerHTML += miniImag
+  //miniImag.classList.add("my-thumbnail")
+  //console.log(miniImag);
  
 });
 
 //prendo la classe dove mi interessa poi metterci la stampa
-const imagSlide = document.querySelectorAll(".my-carousel-item ");
+const imagSlide = document.querySelectorAll(".my-carousel-item");
 console.log(imagSlide);
 
 //setto a 0 l'indice corrente
@@ -57,6 +65,7 @@ let activImag = 0;
 
 //aggiungo la classe active all'indice corrente
 imagSlide[activImag].classList.add("active");
+console.log(imagSlide[activImag]);
 
 //al click del bottone next 
 document.querySelector(".my-next").addEventListener("click", function () {
@@ -95,22 +104,56 @@ document.querySelector(".my-previous").addEventListener("click", function () {
 })
 
 
+///bonus 1.1
+const imagMiniSlide = document.querySelectorAll(".my-thumbnail");
+console.log(imagSlide);
 
-//bonus 1
-const miniatures = document.querySelector(".my-thumbnails");
-//miniatures.classList.add("my-thumbnail")
+//setto a 0 l'indice corrente
+let activMiniImag = 0;
 
-images.forEach((curMiniImages) => {
+//aggiungo la classe active all'indice corrente
+imagMiniSlide[activMiniImag].classList.add("active");
+console.log(imagMiniSlide[activMiniImag]);
 
-  
+//al click del bottone next 
+document.querySelector(".my-next").addEventListener("click", function () {
 
-miniImag =  `
-<img class=" my-thumbnail img-fluid" src="${curMiniImages.image}" </img>`
+  //aggiungo la classe
+  imagMiniSlide[activMiniImag].classList.remove("active")
+  if (activMiniImag < images.length - 1) {
+    activMiniImag++
 
-  miniatures.innerHTML += miniImag
-  //miniImag.classList.add("my-thumbnail")
-  console.log(miniImag);
+  } else {
+    activMiniImag = 0
+  }
+  imagMiniSlide[activMiniImag].classList.add("active");
 })
+
+//al click del bottone previous
+document.querySelector(".my-previous").addEventListener("click", function () {
+  //milestone 1 e 2
+  //aggiungo la classe 
+
+  imagMiniSlide[activMiniImag].classList.remove("active")
+
+  //Se l'indice corrente è 0, 
+  //   imposta l'indice sul immag finale, 
+  //altrimenti 
+  //   decrementa l'indice
+
+  if (activMiniImag == 0) {
+
+    activMiniImag = images.length - 1
+
+  } else {
+    activMiniImag--
+  }
+  imagMiniSlide[activMiniImag].classList.add("active");
+})
+
+
+
+
 
 
 
