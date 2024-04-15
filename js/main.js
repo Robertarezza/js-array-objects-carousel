@@ -26,6 +26,9 @@ const images = [
   },
 ];
 
+
+
+
 //milestone 1
 const imageMyCarousel = document.querySelector(".my-carousel-images");
 //bonus 1
@@ -68,42 +71,44 @@ imagSlide[activImag].classList.add("active");
 //console.log(imagSlide[activImag]);
 
 //al click del bottone next 
-document.querySelector(".my-next").addEventListener("click", function () {
+document.querySelector(".my-next").addEventListener("click", clickNext);
 
-  //rimuovo la classe
+function clickNext() {
   imagSlide[activImag].classList.remove("active")
-  if (activImag < images.length - 1) {
-    activImag++
+  if (activImag < imagSlide.length - 1) {
+      activImag++
+    } else {
+      activImag = 0
+    }
+    //aggiungo la classe
+    imagSlide[activImag].classList.add("active");
+}
 
-  } else {
-    activImag = 0
-  }
-  //aggiungo la classe
-  imagSlide[activImag].classList.add("active");
-})
+
 
 //al click del bottone previous
-document.querySelector(".my-previous").addEventListener("click", function () {
+document.querySelector(".my-previous").addEventListener("click", clickPrevious);
   //milestone 1 e 2
   //rimuovo la classe
-
-  imagSlide[activImag].classList.remove("active")
-
-  //Se l'indice corrente è 0, 
-  //   imposta l'indice sul immag finale, 
-  //altrimenti 
-  //   decrementa l'indice
-
-  if (activImag == 0) {
-
-    activImag = images.length - 1
-
-  } else {
-    activImag--
+  function clickPrevious() {
+    
+    imagSlide[activImag].classList.remove("active")
+  
+    //Se l'indice corrente è 0, 
+    //   imposta l'indice sul immag finale, 
+    //altrimenti 
+    //   decrementa l'indice
+  
+    if (activImag == 0) {
+  
+      activImag = imagSlide.length - 1
+  
+    } else {
+      activImag--
+    }
+    //aggiungo la classe
+    imagSlide[activImag].classList.add("active");
   }
-  //aggiungo la classe
-  imagSlide[activImag].classList.add("active");
-})
 
 
 
@@ -120,11 +125,14 @@ imagMiniSlide[activMiniImag].classList.add("active");
 console.log(imagMiniSlide[activMiniImag]);
 
 //al click del bottone next 
-document.querySelector(".my-next").addEventListener("click", function () {
+document.querySelector(".my-next").addEventListener("click", clickMiniNext)
 
+
+function clickMiniNext() {
+ 
   //rimuovo la classe
   imagMiniSlide[activMiniImag].classList.remove("active")
-  if (activMiniImag < images.length - 1) {
+  if (activMiniImag < imagMiniSlide.length - 1) {
     activMiniImag++
 
   } else {
@@ -132,14 +140,19 @@ document.querySelector(".my-next").addEventListener("click", function () {
   }
   //aggiungo la classe
   imagMiniSlide[activMiniImag].classList.add("active");
-})
+
+}
+
+
+
 
 //al click del bottone previous
-document.querySelector(".my-previous").addEventListener("click", function () {
+document.querySelector(".my-previous").addEventListener("click", clickMiniPrevious);
   //milestone 1 e 2
   //rimuovo la classe
-
-  imagMiniSlide[activMiniImag].classList.remove("active")
+  function clickMiniPrevious() {
+    
+    imagMiniSlide[activMiniImag].classList.remove("active")
 
   //Se l'indice corrente è 0, 
   //   imposta l'indice sul immag finale, 
@@ -148,17 +161,42 @@ document.querySelector(".my-previous").addEventListener("click", function () {
 
   if (activMiniImag == 0) {
 
-    activMiniImag = images.length - 1
+    activMiniImag = imagMiniSlide.length - 1
 
   } else {
     activMiniImag--
+
+
   }
   //aggiungo la classe
   imagMiniSlide[activMiniImag].classList.add("active");
+}
+  
+//bonus 2
+let clock = setInterval(clickNext, 3000)
+let clockMini = setInterval(clickMiniNext, 3000)
+
+document.getElementById("my-stop-button").addEventListener("click", function() {
+  //se l'interval è attivo
+  //lo stoppo
+  //altrimenti
+  //lo faccio ripartire
+  if (clock !== null) {
+    clearInterval(clock);
+    clock = null;
+  }else {
+    clock = setInterval(clickNext, 3000);
+    
+  }
+  if (clockMini !== null) {
+    clearInterval(clockMini);
+    clockMini = null;
+  }else {
+    clockMini = setInterval(clickMiniNext, 3000);
+    
+  }
+
 })
-
-
-
 
 
 
